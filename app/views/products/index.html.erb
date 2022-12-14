@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- NavbarSupportedContent -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-1 text-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link mr-3" href="">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="contacts">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="m-3">
+    <p style="color: green; font-weight: bolder; font-size: 20px"><%= notice %></p>
+    <h1>List of Furniture</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%=product.title%></td>
+          <td><%=product.price%> ₴</td>
+          <td><%= link_to 'Show', product %></td>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td><%= link_to 'Delete', product, method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+    <%= link_to "New product", new_product_path, class: "btn btn-success" %>
+  </div>
+</body>
+</html>
